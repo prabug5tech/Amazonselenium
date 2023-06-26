@@ -11,6 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -36,7 +37,10 @@ public void user_is_on_sample_login_site() throws InterruptedException {
     
 	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Prabu G\\eclipse-workspace\\Automationtest\\src\\test\\resources\\drivers\\chromedriver.exe");
 
-	driver = new ChromeDriver();
+	//In latest chrome driver no need to set property however it wont run in local so we have to set the options manually and give command line to run locally//
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");
+			driver = new ChromeDriver(options);
 
 	driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 
@@ -82,6 +86,8 @@ public void user_is_navigated() {
 	
 	System.out.print("This page is succesfully logged in");
 	
+	
+	driver.close();
     
 }
 }

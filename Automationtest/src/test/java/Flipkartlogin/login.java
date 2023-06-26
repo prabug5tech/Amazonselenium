@@ -10,6 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -32,7 +33,11 @@ public class login {
 	public void user_is_on_flipkart_site() throws InterruptedException, AWTException {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Prabu G\\eclipse-workspace\\Automationtest\\src\\test\\resources\\drivers\\chromedriver.exe");
 
-		driver = new ChromeDriver();
+		
+		//In latest chrome driver no need to set property however it wont run in local so we have to set the options manually and give command line to run locally//
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--remote-allow-origins=*");
+				driver = new ChromeDriver(options);
 
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 

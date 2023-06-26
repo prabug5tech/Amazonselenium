@@ -6,11 +6,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 
 public class googlesearchflipkart {
 	
@@ -19,9 +22,14 @@ public class googlesearchflipkart {
 	@Given("Browser is open")
 	public void browser_is_open() {
 		
+	
+		
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\Prabu G\\eclipse-workspace\\Automationtest\\src\\test\\resources\\drivers\\chromedriver.exe");
 		
-		driver = new ChromeDriver();
+		//In latest chrome driver no need to set property however it wont run in local so we have to set the options manually and give command line to run locally//
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		driver = new ChromeDriver(options);
 		
 		System.out.println("The browser is open");
 		
